@@ -21,7 +21,7 @@ function App() {
   return (
     <Container>
       <Hero />
-      <Who id={"who"} />
+      <Who />
       <Works />
       <Contacts />
     </Container>

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { showNotification } from "../notification.js";
 
 const Section = styled.div`
   display: flex;
@@ -83,15 +84,15 @@ const Navbar = () => {
         <Links>
           <Logo src="./img/logo.png"/>
 					<List>
-						<ListItem>Home</ListItem>
-						<ListItem>Studio</ListItem>
-						<ListItem>Works</ListItem>
-						<ListItem>Contacts</ListItem>
+						<ListItem onClick={() => document.getElementById("home")?.scrollIntoView()}>Home</ListItem>
+						<ListItem onClick={() => document.getElementById("who")?.scrollIntoView()}>Studio</ListItem>
+						<ListItem onClick={() => document.getElementById("works")?.scrollIntoView()}>Works</ListItem>
+						<ListItem onClick={() => document.getElementById("contacts")?.scrollIntoView()}>Contacts</ListItem>
 					</List>
         </Links>
         <Icons>
-					<Icon src="./img/search.png" />
-					<Button>Hire Now</Button>
+					<Icon src="./img/search.png" onClick={() => showNotification()} />
+					<Button onClick={() => document.getElementById("contacts")?.scrollIntoView()}>Hire Now</Button>
 				</Icons>
       </Container>
     </Section>

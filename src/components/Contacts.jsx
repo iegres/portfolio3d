@@ -2,10 +2,13 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Map from './Map.jsx';
 // import emailjs from "@emailjs/browser";
+import { showNotification } from "../notification.js";
 
 const Section = styled.div`
   height: 100vh;
   scroll-snap-align: center;
+  display: flex;
+  position: relative;
 `;
 
 const Container = styled.div`
@@ -75,6 +78,22 @@ const Right = styled.div`
   }
 `;
 
+const BackButton = styled.button`
+  background-color: #d93f6b;
+  color: white;
+  font-weight: 500;
+  width: 120px;
+  height: 30px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 2%;
+  left: calc(50% - 60px);
+  z-index: 1;
+`;
+
 // const D = styled.div`
 //   color: red;
 // `
@@ -85,7 +104,12 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSuccess(true);
+    const formInputs = document.querySelector("form")?.elements;
+    if (formInputs?.name.value && formInputs?.email.value && formInputs?.message.value) {
+      setSuccess(true);
+    } else {
+      showNotification("Please fill in all fields");
+    }
 
     // emailjs
     //   .sendForm(
@@ -106,13 +130,13 @@ const Contact = () => {
     //   );
   };
   return (
-    <Section>
+    <Section id="contacts">
       <Container>
         <Left>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <Title>Contact Us</Title>
             <Input placeholder="Name" name="name" />
-            <Input placeholder="Email" name="email" />
+            <Input placeholder="Email" name="email" type="email" />
             <TextArea
               placeholder="Write your message"
               name="message"
@@ -138,6 +162,7 @@ const Contact = () => {
             </h1>
           </div> */}
         </Left>
+        <BackButton onClick={() => document.getElementById("hero")?.scrollIntoView()}>Back on Top</BackButton>
         <Right>
           <Map />
         </Right>

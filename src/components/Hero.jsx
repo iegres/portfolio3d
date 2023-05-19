@@ -122,7 +122,7 @@ const Img = styled.img`
 
 const Hero = () => {
   return (
-    <Section>
+    <Section id="hero">
       <Navbar />
       <Container>
         <Left>
@@ -134,7 +134,7 @@ const Hero = () => {
           <Desc>
             we enjoy creating delightful, human-centered digital experiences.
           </Desc>
-          <Button>Learn More</Button>
+          <Button onClick={() => document.getElementById("who")?.scrollIntoView()}>Learn More</Button>
         </Left>
         <Right>
           <Bubble />

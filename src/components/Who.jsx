@@ -78,7 +78,7 @@ const Button = styled.button`
 
 const Who = () => {
   return (
-    <Section>
+    <Section id="who">
       <Container>
         <Left>
           <Cube />
@@ -93,7 +93,7 @@ const Who = () => {
             a creative group of designers and developers with a passion for the
             arts.
           </Desc>
-          <Button>See our works</Button>
+          <Button onClick={() => document.getElementById("works")?.scrollIntoView()}>See our works</Button>
         </Right>
       </Container>
     </Section>

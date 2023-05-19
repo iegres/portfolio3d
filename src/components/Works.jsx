@@ -3,6 +3,7 @@ import styled from "styled-components";
 // import Development from "./Development";
 // import ProductDesign from "./ProductDesign";
 import WebDesign from "./WebDesign";
+import { showNotification } from "../notification.js";
 
 const data = [
   "Web Design",
@@ -21,7 +22,6 @@ const Section = styled.div`
   color: black;
   font-size: 14px;
   font-weight: 300;
-  position: relative;
 `;
 
 const Container = styled.div`
@@ -94,21 +94,38 @@ const Right = styled.div`
   flex: 1;
 `;
 
+const Button = styled.button`
+  background-color: #d93f6b;
+  color: white;
+  font-weight: 500;
+  width: 120px;
+  height: 30px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 2%;
+  left: calc(50% - 60px);
+  z-index: 1;
+`;
+
 const Works = () => {
   // const [work, setWork] = useState("Web Design");
   return (
-    <Section>
+    <Section id="works">
       <Container>
         <Left>
           <List>
             {data.map((item) => (
               // <ListItem key={item} text={item} onClick={() => setWork(item)}>
-              <ListItem key={item} text={item}>
+              <ListItem key={item} text={item} onClick={() => showNotification()}>
                 {item}
               </ListItem>
             ))}
           </List>
         </Left>
+        <Button onClick={() => document.getElementById("contacts")?.scrollIntoView()}>Contacts</Button>
         <Right>
           <WebDesign />
           {/* {(() => {
