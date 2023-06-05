@@ -28,7 +28,7 @@ const WebDesign = () => {
     <>
       <Canvas>
         <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.6}>
+          <Stage intensity={0.6}>
             <Mac />
           </Stage>
           <OrbitControls enableZoom={false} autoRotate />
